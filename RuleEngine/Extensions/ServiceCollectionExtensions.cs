@@ -6,7 +6,7 @@ namespace RuleEngine.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddRuleEngine(IServiceCollection services)
+    public static IServiceCollection AddRuleEngine(this IServiceCollection services)
     {
         services.AddScoped<IRuleEngineManager, DefaultRuleEngineManager>();
         return services;

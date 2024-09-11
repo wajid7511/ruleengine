@@ -6,9 +6,9 @@ using RuleEngine.Exceptions;
 
 namespace RuleEngine.Core;
 
-public class DefaultRuleEngineManager(IEnumerable<IBasicRule> rules, ILogger<DefaultRuleEngineManager>? logger = null) : IRuleEngineManager
+public class DefaultRuleEngineManager(IEnumerable<IBasicRule> executionRules, ILogger<DefaultRuleEngineManager>? logger = null) : IRuleEngineManager
 {
-    private readonly IEnumerable<IBasicRule> _executionRules = rules ?? throw new ArgumentNullException(nameof(rules));
+    private readonly IEnumerable<IBasicRule> _executionRules = executionRules ?? throw new ArgumentNullException(nameof(executionRules));
     private readonly ILogger<DefaultRuleEngineManager>? _logger = logger;
     public async ValueTask<RuleEngineResponse> ExecuteAsync(RuleEngineRequest request, CancellationToken cancellationToken = default, params RuleType[] rules)
     {
